@@ -40,8 +40,15 @@ import {time} from "./model.time.js";
 import {digitalClock} from "./view.digital.js";
 import {analogClock} from "./view.analagoue.js";
 
+let saveButton = document.getElementById("save");
+saveButton.addEventListener("click", function() {
+    let getcurrentTime = time.getCurrentTime();
+    localStorage.setItem("savedTime", JSON.stringify(getcurrentTime));
+})
+
 function updateTime(){
     let getcurrentTime = time.getCurrentTime();
+
 
     let getHours = getcurrentTime.hours;
     let getMinutes = getcurrentTime.minutes;
@@ -50,4 +57,5 @@ function updateTime(){
     analogClock.updateClock(getHours, getMinutes, getSeconds);
 }
 setInterval(updateTime, 1000);
+
 
