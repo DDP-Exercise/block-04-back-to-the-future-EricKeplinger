@@ -30,8 +30,22 @@
  *
  *     Now hurry Marty! Or I will be stuck in the past forever!
  *
- *     Eric Keplinger - 2026-17-04
+ *     Eric Keplinger - 2026-26-04
  *******************************************************/
 
 // HINT:
 // setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+
+import {time} from "./model.time.js";
+import {digitalClock} from "./view.digital.js";
+
+function updateTime(){
+    let getcurrentTime = time.getCurrentTime();
+
+    let getHours = getcurrentTime.hours;
+    let getMinutes = getcurrentTime.minutes;
+    let getSeconds = getcurrentTime.seconds;
+    digitalClock.updateClock(getHours, getMinutes, getSeconds)
+}
+setInterval(updateTime, 1000);
+
