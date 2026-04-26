@@ -38,6 +38,7 @@
 
 import {time} from "./model.time.js";
 import {digitalClock} from "./view.digital.js";
+import {analogClock} from "./view.analagoue.js";
 
 function updateTime(){
     let getcurrentTime = time.getCurrentTime();
@@ -45,7 +46,8 @@ function updateTime(){
     let getHours = getcurrentTime.hours;
     let getMinutes = getcurrentTime.minutes;
     let getSeconds = getcurrentTime.seconds;
-    digitalClock.updateClock(getHours, getMinutes, getSeconds)
+    digitalClock.updateClock(getHours, getMinutes, getSeconds);
+    analogClock.updateClock(getHours, getMinutes, getSeconds);
 }
 setInterval(updateTime, 1000);
 
