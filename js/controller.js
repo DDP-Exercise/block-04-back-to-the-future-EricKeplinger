@@ -30,8 +30,32 @@
  *
  *     Now hurry Marty! Or I will be stuck in the past forever!
  *
- *     Doc Brown - 1955-11-05
+ *     Eric Keplinger - 2026-26-04
  *******************************************************/
 
 // HINT:
 // setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+
+import {time} from "./model.time.js";
+import {digitalClock} from "./view.digital.js";
+import {analogClock} from "./view.analagoue.js";
+
+let saveButton = document.getElementById("save");
+saveButton.addEventListener("click", function() {
+    let getcurrentTime = time.getCurrentTime();
+    localStorage.setItem("savedTime", JSON.stringify(getcurrentTime));
+})
+
+function updateTime(){
+    let getcurrentTime = time.getCurrentTime();
+
+
+    let getHours = getcurrentTime.hours;
+    let getMinutes = getcurrentTime.minutes;
+    let getSeconds = getcurrentTime.seconds;
+    digitalClock.updateClock(getHours, getMinutes, getSeconds);
+    analogClock.updateClock(getHours, getMinutes, getSeconds);
+}
+setInterval(updateTime, 1000);
+
+
